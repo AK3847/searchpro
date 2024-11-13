@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import json
 
+## Custom CSS styling to chaneg font to Poppins ;)
 st.markdown(
     """
     <style>
