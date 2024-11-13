@@ -1,3 +1,4 @@
+# SearchPro
 A fast way to search web - *powered by LLM*
 
 ## Setup Instructions:
@@ -15,7 +16,7 @@ python -m venv venv
 env\Scripts\activate # on windows
 source env/bin/activate # on linux
 ```
-#### Using `conda`
+#### Using `conda`: 
 ```bash
 conda create --name project_env python=3.8
 conda activate project_env
@@ -26,7 +27,9 @@ conda activate project_env
 pip install -r requirements.txt
 ```
 
-### Step-4: Create a `.env` file using the `.env.template` file provided in the repo.
+
+### Step-4: Create a `.env` file 
+- Copy the [.env.template](.env.template) file provided in the repo into a new `.env` file and add your API Keys.
 
 ### Step-5: Run the Flask Backend:
 ```bash
