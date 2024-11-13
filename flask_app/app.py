@@ -28,16 +28,15 @@ def llm_response(formatted_result, user_query):
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
+        response_format={"type": "json_object"},
         messages=[
             {
                 "role": "system",
                 "content": f"{instruction_prompt}",
-                # "content": "You are an AI assistant, whose task is to deliver the content based on the given json query_response of a google search",
             },
             {
                 "role": "user",
-                #  "content": f"{formatted_result}"
                 "content": f"""
                 User query:
                 {user_query}
@@ -47,7 +46,6 @@ def llm_response(formatted_result, user_query):
                 """,
             },
         ],
-        max_tokens=1024,
     )
     return response.choices[0].message.content
 
