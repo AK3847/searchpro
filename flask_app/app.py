@@ -14,12 +14,11 @@ app = Flask(__name__)
 
 
 def format_query(query_data):
-    extracted_data = """
-    
-    """
-    with open("test.json", "w") as f:
-        json.dump(query_data, f)
-
+    extracted_data = """"""
+    if "knowledgeGraph" in query_data:
+        extracted_data += str(query_data["knowledgeGraph"])
+    if "answerBox" in query_data:
+        extracted_data += str(query_data["answerBox"])
     extracted_data += str(query_data["organic"])
     return extracted_data
 
@@ -30,6 +29,7 @@ def llm_response(formatted_result, user_query):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         response_format={"type": "json_object"},
+        temperature=0.5,
         messages=[
             {
                 "role": "system",
