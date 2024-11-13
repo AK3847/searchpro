@@ -1,15 +1,12 @@
-from flask import Flask, request, jsonify
 import json
 import requests
-from dotenv import load_dotenv
 import os
 from openai import OpenAI
-
-with open("../instruction.txt", "r") as f:
-    instruction_prompt = f.read()
+from flask import Flask, request, jsonify
+from dotenv import load_dotenv
+from utils import get_instructions, format_query
 
 load_dotenv()
-
 app = Flask(__name__)
 
 
@@ -25,7 +22,7 @@ def format_query(query_data):
 
 def llm_response(formatted_result, user_query):
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-
+    instruction_prompt = get_instructions()
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         response_format={"type": "json_object"},
