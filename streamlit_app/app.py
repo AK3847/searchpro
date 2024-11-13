@@ -53,7 +53,10 @@ if st.button("Search"):
 
             with tabs[0]:
                 st.markdown("### Answer")
-                st.markdown(answer["text"])
+                if "text" in answer:
+                    st.markdown(answer["text"])
+                else:
+                    st.markdown(answer)
 
             with tabs[1]:
                 st.markdown("### Sources")
